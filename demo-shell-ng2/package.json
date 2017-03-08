@@ -78,7 +78,7 @@
     "ng2-charts": "1.5.0",
     "raphael": "2.2.7",
     "md-date-time-picker": "^2.2.0",
-    "alfresco-js-api": "~1.2.0",
+    "alfresco-js-api": "1.2.0",
     "ng2-3d-editor": "0.0.15",
     "ng2-activiti-analytics": "1.2.0",
     "ng2-alfresco-core": "1.2.0",

@@ -40,6 +40,10 @@
                          class="center-element mdl-cell mdl-cell--12-col">
 
                         <!-- Start View Switch-->
+                        <div *ngIf="isBlob()">
+                            <pdf-viewer [showToolbar]="showToolbar" [urlFile]="urlFileContent"
+                                        [nameFile]="displayName"></pdf-viewer>
+                        </div>
                         <div *ngIf="isPdf()">
                             <pdf-viewer [showToolbar]="showToolbar" [urlFile]="urlFileContent"
                                         [nameFile]="displayName"></pdf-viewer>

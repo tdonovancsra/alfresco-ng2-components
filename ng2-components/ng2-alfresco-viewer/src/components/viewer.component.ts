@@ -76,11 +76,16 @@ export class ViewerComponent {
             return new Promise((resolve, reject) => {
                 let alfrescoApi = this.apiService.getInstance();
                 if (this.urlFile) {
-                    let filenameFromUrl = this.getFilenameFromUrl(this.urlFile);
-                    this.displayName = filenameFromUrl ? filenameFromUrl : '';
-                    this.extension = this.getFileExtension(filenameFromUrl);
-                    this.extensionChange.emit(this.extension);
-                    this.urlFileContent = this.urlFile;
+                    if (this.isBlob()) {
+                        this.displayName = 'test';
+                        this.urlFileContent = this.urlFile;
+                    } else {
+                        let filenameFromUrl = this.getFilenameFromUrl(this.urlFile);
+                        this.displayName = filenameFromUrl ? filenameFromUrl : '';
+                        this.extension = this.getFileExtension(filenameFromUrl);
+                        this.extensionChange.emit(this.extension);
+                        this.urlFileContent = this.urlFile;
+                    }
                     resolve();
                 } else if (this.fileNodeId) {
                     alfrescoApi.nodes.getNodeInfo(this.fileNodeId).then((data: MinimalNodeEntryEntity) => {
@@ -161,6 +166,10 @@ export class ViewerComponent {
      */
     private isImage() {
         return this.isImageExtension() || this.isImageMimeType();
+    }
+
+    private isBlob() {
+        return this.urlFile.includes('blob');
     }
 
     /**
