@@ -30,7 +30,8 @@ export class AttachmentDocumentListComponent implements OnInit {
     @Input()
     taskId: string;
 
-    attachments: any[] = [];
+    entries: any[] = [];
+    nodeResults: any;
 
     constructor(private translateService: AlfrescoTranslationService,
                 private activitiTaskList: ActivitiTaskListService) {
@@ -42,6 +43,7 @@ export class AttachmentDocumentListComponent implements OnInit {
 
     ngOnInit() {
         this.loadAttachmentsByTaskId(this.taskId);
+
     }
 
     private loadAttachmentsByTaskId(taskId: string) {
@@ -49,19 +51,29 @@ export class AttachmentDocumentListComponent implements OnInit {
             this.activitiTaskList.getRelatedContent(taskId).subscribe(
                 (res: any) => {
                     res.data.forEach(content => {
-                        this.attachments.push({
+                        let entryObj = {
                             name: content.name,
                             created: content.created,
-                            createdBy: content.createdBy.firstName + ' ' + content.createdBy.lastName
-                        });
+                            createdBy: content.createdBy.firstName + ' ' + content.createdBy.lastName,
+                            isFile: true,
+                            content: {
+                                mimeType: content.mimeType
+                            }
+                        };
+                        this.entries.push({'entry': entryObj});
                     });
 
+                    this.nodeResults = {
+                        list: {
+                            entries: this.entries
+                        }
+                    };
                 });
         }
     }
 
     isEmpty(): boolean {
-        return this.attachments && this.attachments.length === 0;
+        return this.entries && this.entries.length === 0;
     }
 
 }
