@@ -49,7 +49,8 @@ import {
     ContentService,
     AppConfigService,
     InitAppConfigServiceProvider,
-    ThumbnailService
+    ThumbnailService,
+    BaseUploadService
 } from './src/services/index';
 
 import { FileSizePipe } from './src/pipes/file-size.pipe';
@@ -74,6 +75,7 @@ export * from './src/utils/index';
 export * from './src/events/base.event';
 export * from './src/events/base-ui.event';
 export * from './src/events/folder-created.event';
+export * from './src/events/file.event';
 export * from './src/models/index';
 export { UserPreferencesService } from './src/services/user-preferences.service';
 
@@ -96,7 +98,8 @@ export function providers() {
         AuthGuard,
         AuthGuardEcm,
         AuthGuardBpm,
-        ThumbnailService
+        ThumbnailService,
+        BaseUploadService
     ];
 }
 

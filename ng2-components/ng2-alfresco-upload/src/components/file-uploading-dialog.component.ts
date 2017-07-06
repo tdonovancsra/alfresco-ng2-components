@@ -16,10 +16,9 @@
  */
 
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { FileModel, FileUploadStatus } from '../models/file.model';
-import { AlfrescoTranslationService } from 'ng2-alfresco-core';
+import { FileModel, FileUploadStatus } from 'ng2-alfresco-core';
+import { AlfrescoTranslationService, FileUploadCompleteEvent } from 'ng2-alfresco-core';
 import { UploadService } from '../services/upload.service';
-import { FileUploadCompleteEvent } from '../events/file.event';
 
 @Component({
     selector: 'file-uploading-dialog',

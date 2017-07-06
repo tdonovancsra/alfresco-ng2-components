@@ -17,10 +17,9 @@
 
 import { Component, ElementRef, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
-import { AlfrescoApiService, AlfrescoContentService, AlfrescoTranslationService, LogService, NotificationService, FileUtils } from 'ng2-alfresco-core';
+import { AlfrescoApiService, AlfrescoContentService, AlfrescoTranslationService, LogService, NotificationService, FileUtils, FileModel } from 'ng2-alfresco-core';
 import { MinimalNodeEntryEntity } from 'alfresco-js-api';
 import { UploadService } from '../services/upload.service';
-import { FileModel } from '../models/file.model';
 import { PermissionModel } from '../models/permissions.model';
 
 @Component({
